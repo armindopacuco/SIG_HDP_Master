@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Regiso de Ocorrências de Funcionários</title>
+    </h:head>
+
+    <h:body>
+
+        <ui:composition template="./../../template/masterPage.xhtml">
+            <ui:define name="menuHorizontal">
+                <ui:include src="./../menuHorizontalRh.xhtml"/>
+            </ui:define>
+            <ui:define name="menuLateral">
+                <ui:include src="./../menuLateralRh.xhtml"/>
+            </ui:define>
+
+            <ui:define name="center">
+                <h1>Recursos Humanos -> Novo Contrato</h1>
+                <br/>
+                <h:form prependId="false">
+                    <p:messages id="messagens" closable="true"/>
+                    <p:growl id="ms" autoUpdate="true" />
+                    <h:panelGrid columns="2" width="100%">
+                        <h:panelGroup>
+                            <h2>Dados do Candidato</h2>
+                            <p:fieldset>
+                                <h:panelGrid columns="2" width="100%" cellpadding="3">
+                                    <p:outputLabel value="Nome do Candidato"/>
+                                    <p:selectOneMenu style="width: 90%" required="true" requiredMessage="Selecione o Candidato !">
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel value="Nº do Candidato"/>
+                                    <p:inputText style="width: 50%" readonly="true"/>
+
+                                    <p:outputLabel value="Tipo de Candidatura"/>
+                                    <p:inputText style="width: 50%" readonly="true"/>
+                                </h:panelGrid>
+                                <br/>
+                                <p:separator />
+                                <p:separator />
+                            </p:fieldset>
+                        </h:panelGroup>
+                        <h:panelGroup>
+                            <h2>Dados de Colocação</h2>
+                            <p:fieldset>
+                                <h:panelGrid columns="2" width="100%" cellpadding="4">
+                                    <p:outputLabel value="Departamento"/>
+                                    <p:selectOneMenu style="width: 70%">
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel value="Secção"/>
+                                    <p:selectOneMenu style="width: 70%">
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel value="Cargo"/>
+                                    <p:selectOneMenu style="width: 70%" required="true" requiredMessage="Selecione o Cargo">
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel value="Salário Base"/>
+                                    <p:inputText style="width: 40%" readonly="true"/>
+                                </h:panelGrid>
+                            </p:fieldset>
+                        </h:panelGroup>
+                    </h:panelGrid>
+
+                    <h2><center>Dados do Contrato</center></h2>
+                    <h:panelGrid columns="2" width="100%" cellpadding="3">
+                        <p:fieldset>
+                            <h:panelGrid columns="2" width="100%" cellpadding="3">
+                                <h:outputLabel value="Data de Início"/>
+                                <p:calendar size="18" required="true" requiredMessage="Selecione a Data de Início"/>
+
+                                <h:outputLabel value="Data de Término" for="dataTer"/>
+                                <p:calendar  size="18" yearRange= "c-10:c+12"/>
+                            </h:panelGrid>
+                            <br/>
+                        </p:fieldset>
+                        <p:fieldset>
+                            <h:panelGrid columns="2" width="100%" cellpadding="5">
+                                <h:outputLabel value="Duração em Meses"/>
+                                <p:inputText id="duracao" size="18" style="width:30%" readonly="true"/>
+
+                                <p:outputLabel value="Tipo de Contrato"/>
+                                <p:selectOneMenu style="width: 75%">
+                                </p:selectOneMenu>
+                            </h:panelGrid>
+                        </p:fieldset>
+                    </h:panelGrid>
+                    <center>
+                        <p:fieldset style="width: 80%; text-align: center">
+                            <p:dataTable value="#{contratoBean.subsidiosArray}" var="item" 
+                                         paginator="true" rows="3" paginatorPosition="bottom">
+                                <p:column>
+                                    <f:facet name="header">Subsídio</f:facet>
+                                        #{item}
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Obrigatório</f:facet>
+                                    <p:selectBooleanCheckbox />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Valor</f:facet>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Activado</f:facet>
+                                    <p:selectBooleanCheckbox />
+                                </p:column>
+                            </p:dataTable>
+                        </p:fieldset>
+                        <p:separator/>
+                        <h:panelGrid columns="2">
+                            <p:commandButton value="Guardar Contrato" action="#"/>
+                            <p:button value="Cancelar"/>
+                        </h:panelGrid>
+                    </center>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

@@ -1,0 +1,92 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui">
+
+    <!-- Definindo a cor da barra lateral-->
+    <h:form style="background-color: rgba(230,230,230,0.05); height: 620px">
+        <p:panelMenu style="width: 100%">
+            <p:submenu label="Iniciar">
+                <p:menuitem value="Página Inicial" url="/faces/diagVisao/homeDiag.xhtml"/>
+            </p:submenu>
+
+            <p:submenu label="Tabelas Auxiliares">
+                <p:submenu label="Sector do Exame">
+                    <p:menuitem value="Cadastrar"/>
+                    <p:menuitem value="Visualizar"/>
+                </p:submenu>
+
+                <p:submenu label="Categoria">
+                    <p:menuitem value="Cadastrar"/>
+                    <p:menuitem value="Visualizar"/>
+                </p:submenu>
+
+                <p:submenu label="Tipo de Exame">
+                    <p:menuitem value="Cadastrar"/>
+                    <p:menuitem value="Visualizar"/>
+                </p:submenu>
+
+                <p:submenu label="Material">
+                    <p:menuitem value="Cadastrar"/>
+                    <p:menuitem value="Visualizar"/>
+                </p:submenu>
+
+                <p:submenu label="Tipo de Amostra">
+                    <p:menuitem value="Cadastrar"/>
+                    <p:menuitem value="Visualizar"/>
+                </p:submenu>
+
+                <p:submenu label="Suporte">
+                    <p:menuitem value="Cadastrar"/>
+                    <p:menuitem value="Visualizar"/>
+                </p:submenu>
+
+                <p:submenu label="Equipamento">
+                    <p:menuitem value="Cadastrar"/>
+                    <p:menuitem value="Visualizar"/>
+                </p:submenu>
+
+                <p:submenu label="Modelo de Equipamento">
+                    <p:menuitem value="Cadastrar"/>
+                    <p:menuitem value="Visualizar"/>
+                </p:submenu>
+            </p:submenu>
+            <p:submenu label="Exames">
+                <p:menuitem value="Registar Exame"/>
+                <p:menuitem value="Listar Exames"/>
+                <p:menuitem value="Listar Pedidos de Exames"/>
+            </p:submenu>
+            <p:submenu label="Laboratório">
+                <p:submenu label="Análises Clínicas">
+                    <p:menuitem value="Listar Pedidos de Exames"/>
+                    <p:menuitem value="Realizar Pedido de Exame"/>
+                    <p:menuitem value="Registar Resultado de Exame"/>
+                    <p:menuitem value="Controlar Resultados de Exames"/>
+                    <p:menuitem value="Controlar Livro de Trabalho"/>
+                </p:submenu>
+                <p:submenu label="Hemoterápia">
+                    <p:menuitem value="Registo de Candidato à Dador" url="/faces/diagVisao/paginas/hemoterapia/candidatoDador/candidatoDador.xhtml"/>
+                    <p:menuitem value="Listar Candidato à Dador" url="/faces/diagVisao/paginas/hemoterapia/candidatoDador/listarCandidatos.xhtml"/>
+                    <p:menuitem value="Registo do Dador"/>
+                    <p:menuitem value="Listar Dadores"/>
+                    <p:menuitem value="Resultados de Tipagem a Dador"/>
+                    <p:menuitem value="Resultados de Tipagem a Doentes"/>
+                    <p:menuitem value="Resultados de Compatibilidade a Doentes (Transfusão)"/>
+                </p:submenu>
+            </p:submenu>
+            <p:submenu label="Imagiologia">
+                <p:submenu label="Radiografia">
+                    <p:menuitem value="Listar Pedidos de Exames"/>
+                    <p:menuitem value="Realizar Pedido de Exame"/>
+                    <p:menuitem value="Controlar Resultados de Exames"/>
+                </p:submenu>
+
+                <p:submenu label="Ecografia">
+                    <p:menuitem value="Listar Pedidos de Exames"/>
+                    <p:menuitem value="Realizar Pedido de Exame"/>
+                    <p:menuitem value="Controlar Resultados de Exames"/>
+                </p:submenu>
+            </p:submenu>
+        </p:panelMenu>
+    </h:form>
+</ui:composition>

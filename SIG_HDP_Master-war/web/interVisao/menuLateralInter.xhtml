@@ -1,0 +1,87 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui">
+
+    <!-- Definindo a cor da barra lateral-->
+    <h:form style="background-color: rgba(230,230,230,0.05); height: 620px">
+        <p:panelMenu style="width: 100%">
+            <p:submenu label="Iniciar">
+                <p:menuitem value="Página Inicial" url="/faces/interVisao/homeInter.xhtml"/>
+            </p:submenu>
+
+            <p:submenu label="Processo de Internamento">
+                <p:submenu label="Inscricao e Registo">
+                    <p:menuitem value="Inscrever Paciente"/>
+                    <p:menuitem value="Registar Internamento"/>
+                </p:submenu>
+                <p:submenu label="Registo de Doenças" >
+                    <p:menuitem value="Registar doença Inter/Coex."  url="/faces/ModuloI/paginas/registoDoencasPacienteInternado/cadastroDoencaInternamento.xhtml"/>
+                    <p:menuitem value="Resul. doenças Diag."/>
+                </p:submenu>
+                <p:submenu label="Ficha de Controlo">
+                    <p:menuitem value="Abrir Ficha de Controlo Diario"/>
+                    <p:menuitem value="Ficha de Controlo"/>
+                </p:submenu>
+                <p:submenu label="Exames Ped./Resul.">
+                    <p:menuitem value="Registar Pedido Exame"/>
+                    <p:menuitem value="Ver Resultado Exame"/>
+                </p:submenu>
+                <p:submenu label="Alta e Saida">
+                    <p:menuitem value="Registar Alta"/>
+                    <p:menuitem value="Registar Saída"/>
+                </p:submenu>
+                <p:submenu label="Relatorios">
+                    <p:menuitem value="Mostrar Relatórios"/>
+                </p:submenu>
+
+                <p:submenu label="Tabelas de Apoio" >
+                    <p:submenu label="Status">
+                        <p:menuitem value="Registar"/>
+                        <p:menuitem value="Visualizar"/>
+                    </p:submenu>
+                    <p:submenu label="Enfermaria">
+                        <p:menuitem value="Registar"/>
+                        <p:menuitem value="Visualizar"/>
+                    </p:submenu>
+                    <p:submenu label="Quarto">
+                        <p:menuitem value="Registar"/>
+                        <p:menuitem value="Visualizar"/>
+                    </p:submenu>
+                    <p:submenu label="Cama">
+                        <p:menuitem value="Registar"/>
+                        <p:menuitem value="Visualizar"/>
+                    </p:submenu>
+                    <p:submenu label="Tipo Doença Paciente">
+                        <p:menuitem value="Registar"/>
+                    </p:submenu>
+                </p:submenu>
+
+            </p:submenu>
+            <p:submenu label="Centro Nutricional Terapeutico">
+                <p:submenu label="Ficha de Controlo Terapeutico">
+                    <p:menuitem value="Abrir Ficha de Controlo Diario"/>
+                    <p:menuitem value="Ficha de Controlo Terapeutico"/>
+                </p:submenu>
+                <p:submenu label="Malnutricao Severa">
+                    <p:menuitem value="F. Ter. Malnutricao Severa"/>
+                </p:submenu>
+                <p:submenu label="Seguimento Nutricional">
+                    <p:menuitem value="F. de Contr. de Seg. Nutricional"/>
+                    <p:menuitem value="Controle de Seg. Nutricional"/>
+                    <p:menuitem value="Avaliacao Final Seg. Nutricional"/>
+                </p:submenu>
+                <p:submenu label="Seccão de Nutricao">
+                    <p:menuitem value="Registar Entrega de Leite"/>
+                </p:submenu>
+            </p:submenu>
+            <p:submenu label="Centro de Tratamento TB">
+
+            </p:submenu>
+            <p:submenu label="Centro de Tratamento HIV">
+                
+            </p:submenu>
+
+        </p:panelMenu>
+    </h:form>
+</ui:composition>

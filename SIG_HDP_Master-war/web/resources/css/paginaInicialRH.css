@@ -1,0 +1,33 @@
+/* 
+    Document   : paginaInicialRH
+    Created on : 2/abr/2016, 10:38:44
+    Author     : samia
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/*root { 
+    display: block;
+}*/
+
+#divImg{
+    width:95%; 
+    
+}
+
+#imgHome{
+    width: 90%
+}
+
+#menuLateral{
+    width: 100%
+}
+
+
+cabecalho{
+    position: relative;
+    margin-left: -15%;
+    margin-bottom: -15%;
+    margin-top: 15%;
+    width:100%;
+}

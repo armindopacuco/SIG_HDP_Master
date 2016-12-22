@@ -1,0 +1,34 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui">
+
+    <!-- Definindo a cor da barra lateral-->
+    <h:form style="background-color: rgba(230,230,230,0.05); height: 620px">
+         <p:panelMenu style="width: 100%">
+             <p:submenu label="Iniciar">
+                <p:menuitem value="Página Inicial" url="/faces/home.xhtml"/>
+             </p:submenu>
+             <p:submenu label="Entidades">
+                <p:menuitem value="Pessoas"/>
+                <p:menuitem value="Empresas"/>
+                <p:menuitem value="Fornecedores"/>
+                <p:menuitem value="Clientes"/>
+             </p:submenu>
+            <p:submenu label="Hospital">
+                <p:menuitem value="Admissões"  url="/faces/admsVisao/homeAdms.xhtml"/>
+                <p:menuitem value="Ambulatório" url="/faces/ambVisao/homeAmb.xhtml"/>
+                <p:menuitem value="Emergências" url="/faces/emgVisao/homeEmg.xhtml"/>
+                <p:menuitem value="Internamento" url="/faces/interVisao/homeInter.xhtml"/>
+                <p:menuitem value="Diagnósticos" url="/faces/diagVisao/homeDiag.xhtml"/>
+                <p:menuitem value="Superintendência " url="/faces/supiVisao/homeSupi.xhtml"/>
+                <p:menuitem value="Farmácia" url="/faces/farmVisao/homeFarm.xhtml"/>
+                <p:menuitem value="Morgue" url="/faces/morgueVisao/homeMorgue.xhtml"/>
+                 <p:menuitem value="Recursos Humanos" url="/faces/rhVisao/homeRh.xhtml"/>
+            </p:submenu>
+            <p:submenu label="Segurança">
+                <p:menuitem value="Utilizadores" url="#" />
+            </p:submenu>
+        </p:panelMenu>
+    </h:form>
+</ui:composition>

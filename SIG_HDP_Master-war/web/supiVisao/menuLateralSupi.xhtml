@@ -1,0 +1,59 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui">
+
+    <!-- Definindo a cor da barra lateral-->
+    <h:form style="background-color: rgba(230,230,230,0.05); height: 620px">
+        <p:panelMenu style="width: 100%">
+            <p:submenu label="Iniciar">
+                <p:menuitem value="Página Inicial" url="/faces/supiVisao/homeSupi.xhtml"/>
+            </p:submenu>
+
+            <p:submenu label="Enfermeiros">
+                <p:menuitem value="Listar Enfermeiros"/>      
+            </p:submenu>
+
+            <p:submenu label="Avaliação de Estagiário">
+                <p:menuitem value="Registar Pontuação"/>
+                <p:menuitem value="Listar Pontuações"/>
+                <p:menuitem value="Registar Critério"/>
+                <p:menuitem value="Listar Critérios"/>
+                <p:menuitem value="Registar Avaliação"/>
+                <p:menuitem value="Listar Avaliações"/>
+            </p:submenu>
+
+            <p:submenu  label="Formação de Enfermeiros">
+                <p:menuitem value="Registar Formador"/>
+                <p:menuitem value="Listar Formadores"/>
+                <p:menuitem value="Registar Formação"/>
+                <p:menuitem value="Listar Formações"/>
+                <p:menuitem value="Adicionar Enfermeiros"/>  
+            </p:submenu>
+            <p:submenu label="Programa nos Postos">
+                <p:menuitem value="Abertura do Programa" />
+                <p:menuitem value="Listar Programas" />
+                <p:menuitem value="Adicionar Funcionários"/>
+                <p:menuitem value="Listar Funcionários do Programa"/> 
+            </p:submenu>
+
+            <p:submenu label="Distribuição de Mosquiteiro">
+                <p:menuitem value="Actualizar Est.Mosquiteiro"/>
+                <p:menuitem value="Registo de Distribuição"/>
+                <p:menuitem value="Listar Distribuições"/>
+            </p:submenu>
+
+            <p:submenu label="Gestão de Escala">
+                <p:menuitem value="Registar Equipa"/>
+                <p:menuitem value="Listar Equipas"/>
+                <p:menuitem value="Adicionar Enfermeiros"/>
+                <p:menuitem value="Listar Equipas Formadas"/>
+                <p:menuitem value="Elaborar Escala"/>
+                <p:menuitem value="Listar Escala"/>
+                <p:menuitem value="Registar Troca"/>
+                <p:menuitem value="Listar Trocas"/>
+            </p:submenu>
+
+        </p:panelMenu>
+    </h:form>
+</ui:composition>

@@ -1,0 +1,323 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                 template="../../../../MasterPage.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name="center">
+        
+         <h:form>
+            <p:commandButton style=" border-radius:10%;font-weight:700"
+                             value="Listar Candidatos" ajax="false"
+                             action="/faces/ModuloGD/Diagnosticos/paginas/hemoterapia/candidatoDador/listarCandidatoDador.xhtml"/>
+        </h:form>
+        <p:separator/>
+        <h:form  title="CADASTRO DE CANDIDATOS" id="cadastroCandidato" >
+            <p:panel header="CADASTRO DE CANDIDATOS">
+                <p:messages id="messagens" closable="true"/>
+     
+                <p:tabView id="cadstroCandi">
+
+                    <p:tab title="Dados Pessoais"> 
+                        <p:fieldset legend="Dados Pessoais"  >
+                           
+                            <h:panelGrid id="Dadospessoais" columns="7"  cellpadding="7" >
+                               <h:outputLabel value="Nome Completo" for="nome"/>
+                               <p:inputText id="nome" size="43" value="#{candidatoDadorController.candidatodador.nomeCompleto}"  
+                                             required="true" requiredMessage="E necessario escrever o Nome"/>
+                           <h:outputLabel value="Data de Nascimento" for="dataNascimento"/>  
+                                <h:panelGroup>
+                                    <p:growl id="dataNascimento" showDetail="true" />
+                                    <p:calendar  size="15"   value="#{candidatoDadorController.candidatodador.dataNascimento}" navigator="true"
+                                                 required="true" requiredMessage="É necessário informar a data de nascimento" >  
+                                        <p:ajax event="dateSelect" listener="#{calendarView.onDateSelect}" update="dataNascimento" />
+                                        <p:ajax event="dateSelect" listener="#{candidatoDadorController.calculaIdade()}" update="idade" />
+                                    </p:calendar>
+                                </h:panelGroup> 
+                                
+                                <h:outputLabel value="Idade" for="idade"/>
+                                <p:inputText id="idade" size="5"
+                                             value="#{candidatoDadorController.idadeCandidat}"/><h:outputLabel value="Anos de Idade"/>
+
+                                <h:outputLabel value="Peso (kg)" for="peso"/>
+                                <p:inputText id="peso" size="5"
+                                             value="#{candidatoDadorController.candidatodador.peso}"/>
+
+                            
+                                
+                            </h:panelGrid>
+                            
+                            <h:panelGrid columns="4" width="70%"  cellpadding="7"  style=" font-family: cursive; alignment-adjust:text-before-edge ">                    
+                                
+                                <h:outputLabel value="Religiao" for="religiao"/>
+                                <p:inputText id="religiao" size="22"
+                                             value="#{candidatoDadorController.candidatodador.religiao}"/>
+
+                                <h:outputLabel value="Profissao" />
+                                <p:inputText id="profissao" size="22"
+                                             value="#{candidatoDadorController.candidatodador.profissao}"/>
+                                
+                                <h:outputLabel value="Local de Trabalho" />
+                                <p:inputText id="localTrabalho" size="22"
+                                             value="#{candidatoDadorController.candidatodador.localTrabalho}"/>
+
+                                
+                                <h:outputLabel value="Telefone" for="telefone"/>
+                                <p:inputMask id="telefone" size="22"
+                                             value="#{candidatoDadorController.candidatodador.telefone}"
+                                             mask="(244) 999-999-999"/>  
+                                 
+                                <h:outputLabel value="Telemovel" for="telefone"/>
+                                <p:inputMask id="telemovel" size="22"
+                                             value="#{candidatoDadorController.candidatodador.telemovel}"
+                                             mask="(244) 999-999-999"/>  
+
+                                                 
+                               
+                                <h:outputLabel value="Sexo:" />
+                                <p:selectOneRadio   value="#{candidatoDadorController.sexo.idSexo}" 
+                                                     required="true" requiredMessage="É necessário informar o sexo" >  
+                                    <f:selectItems value="#{candidatoDadorController.listaSexos()}"
+                                                   var="sexo"
+                                                   itemLabel="#{sexo.descricaoSexo}" itemValue="#{sexo.idSexo}" />
+                                </p:selectOneRadio>         
+                                
+                            </h:panelGrid>
+                            
+                            <h:panelGrid columns="2"  id="estado" width="50%"  cellpadding="7" >
+                                <h:outputLabel value="Estado Civil:" for="estadoCivil" />
+                                <p:selectOneRadio value="#{candidatoDadorController.estadoCivil.idEstadoCivil}" >
+                                    <f:selectItems value="#{candidatoDadorController.listaEstadoCivils()}"
+                                                   var="estadoCivil"
+                                                   itemLabel="#{estadoCivil.descricaoEstadoCivil}" itemValue="#{estadoCivil.idEstadoCivil}"/>
+                                   
+                                </p:selectOneRadio>
+
+                            </h:panelGrid>
+
+                            <h:panelGrid columns="7" width="80%"  cellpadding="7" >
+                                <h:outputLabel value="Nacionalidade:" />
+                                <h:outputLabel value="Pais" />
+                                <p:selectOneMenu   value="#{candidatoDadorController.pais.idPais}"  >
+                                    <f:selectItem itemLabel="Selecione" />
+                                    <p:ajax event="change" update="cboProvincia,cboMunicipio" />
+                                    <f:selectItems value="#{candidatoDadorController.listaPaises()}" 
+                                                   var="pais" 
+                                                   itemLabel="#{pais.nomePais}" itemValue="#{pais.idPais}"  />
+                                </p:selectOneMenu>
+
+
+                                <h:outputLabel value="Provincia" />
+                                <p:selectOneMenu id="cboProvincia"   value="#{candidatoDadorController.provincia.idProvincia}">
+                                    <f:selectItem itemLabel="Selecione" noSelectionOption="true"/>
+                                    <p:ajax event="change" update="cboMunicipio" />
+                                    <f:selectItems value="#{candidatoDadorController.listarProvinciasPais(candidatoDadorController.pais.idPais)}"
+                                                   var="provincia"
+                                                   itemLabel="#{provincia.nomeProvincia}" itemValue="#{provincia.idProvincia}" />
+                                </p:selectOneMenu>
+
+
+                                <h:outputLabel value="Municipio" />
+                                <p:selectOneMenu id="cboMunicipio"   value="#{candidatoDadorController.municipio.idMunicipio}"
+                                                  required="true" requiredMessage="É necessário informar o municipio" >  
+                                    <f:selectItem itemLabel="Selecione" noSelectionOption="true"/>
+                                    <f:selectItems value="#{candidatoDadorController.listarMunicipioProvincia(candidatoDadorController.provincia.idProvincia)}"
+                                                   var="municipio"
+                                                   itemLabel="#{municipio.nomeMunicipio}" itemValue="#{municipio.idMunicipio}" />
+                                </p:selectOneMenu>
+                            </h:panelGrid>
+
+
+                        </p:fieldset>
+                        <br/>
+                        <p:fieldset legend="Morada"  style=" font-family: cursive; alignment-adjust: central; " >
+                            <h:panelGrid columns="4" width="50%" cellspacing="5" cellpadding="5" >
+
+                                <h:outputLabel value="Municipio" />
+                                <p:selectOneMenu id="cboMunicipio2"   value="#{candidatoDadorController.municipio.idMunicipio}"
+                                                 required="true" requiredMessage=" Deve Selecionar o Municipio">
+                                    <f:selectItem itemLabel="Selecione" noSelectionOption="true"/>
+                                    <f:selectItems value="#{candidatoDadorController.listarMunicipioProvincia(1)}"
+                                                   var="municipio"
+                                                   itemLabel="#{municipio.nomeMunicipio}" itemValue="#{municipio.idMunicipio}" />
+                                </p:selectOneMenu>
+
+                                <h:outputLabel value="Bairro " for="bairro"/>
+                                <p:inputText id="bairro" size="20"
+                                             value="#{candidatoDadorController.morada.bairro}"
+                                             required="true" requiredMessage="É necessário informar o bairro"/>
+
+                                <h:outputLabel value="Rua " for="rua"/>
+                                <p:inputText id="rua" size="20"
+                                             value="#{candidatoDadorController.morada.rua}"
+                                             required="true"
+                                             requiredMessage="É necessário informar a rua"/>
+
+                                <h:outputLabel value="Casa " for="casa"/>
+                                <p:inputText id="casa" size="20"
+                                             value="#{candidatoDadorController.morada.casa}"/>
+
+                            </h:panelGrid>
+                        </p:fieldset>
+                    </p:tab>
+
+         
+                    <p:tab title="Triagem">
+                        <p:fieldset legend="Questoes a se Fazer" style=" font-family: cursive; alignment-adjust: central; " >
+                            <h:panelGrid columns="2" width="50%"  cellpadding="2" >
+
+                                
+
+                                <h:outputLabel value="Tem peso superior a 50 kg" />
+                                <p:selectOneRadio   value="#{candidatoDadorController.peso.idRespostaTriagem}"
+                                                    required="true" requiredMessage="Deve Selecionar o Estado das Certificado De Habilitaces Literarias">
+                                    <f:selectItems value="#{candidatoDadorController.listaRespostaTriagems()}"
+                                                   var="pes"
+                                                   itemLabel="#{pes.descricaoRespostaTriagem}"
+                                                   itemValue="#{pes.idRespostaTriagem}"/>
+                                </p:selectOneRadio>
+                                
+                                <h:outputLabel value="Fez a ultima doaccao  há mais de 90 dias? " />
+                                <p:selectOneRadio   value="#{candidatoDadorController.ultimaDoacao.idRespostaTriagem}"
+                                                    required="true" requiredMessage="Deve Selecionar o Estado das Comprovativo Para os Medicos/ Enfermeiros">
+                                    <f:selectItems value="#{candidatoDadorController.listaRespostaTriagems()}"
+                                                   var="doa"
+                                                   itemLabel="#{doa.descricaoRespostaTriagem}"
+                                                   itemValue="#{doa.idRespostaTriagem}"/>
+                                </p:selectOneRadio >
+                                
+                                 <h:outputLabel value="Teve mais de dois parceiros nos últimos 3 meses?" />
+                                 <p:selectOneRadio   value="#{candidatoDadorController.parceiros.idRespostaTriagem}" 
+                                                     required="true" requiredMessage="Deve Selecionar o Estado dasCedula ou Carteira pessoal">
+                                    <f:selectItems value="#{candidatoDadorController.listaRespostaTriagems()}"
+                                                   var="par"
+                                                   itemLabel="#{par.descricaoRespostaTriagem}"
+                                                   itemValue="#{par.idRespostaTriagem}"/>
+                                </p:selectOneRadio>
+                                
+                                <h:outputLabel value="Teve Hepatite após os 10 anos de idade?" />
+                                <p:selectOneRadio   value="#{candidatoDadorController.hepatite.idRespostaTriagem}" 
+                                                    required="true" requiredMessage="Deve Selecionar o Estado das Atestado Medico">
+                                    <f:selectItems value="#{candidatoDadorController.listaRespostaTriagems()}"
+                                                   var="hepa"
+                                                   itemLabel="#{hepa.descricaoRespostaTriagem}"
+                                                   itemValue="#{hepa.idRespostaTriagem}"/>
+                                </p:selectOneRadio>
+                                
+                                  <h:outputLabel value="Teve Málaria nos ultimos 6 meses?" />
+                                  <p:selectOneRadio   value="#{candidatoDadorController.gravida.idRespostaTriagem}"
+                                                      required="true" requiredMessage="Deve Selecionar o Estado do Registro Criminal">
+                                    <f:selectItems value="#{candidatoDadorController.listaRespostaTriagems()}"
+                                                   var="mal"
+                                                   itemLabel="#{mal.descricaoRespostaTriagem}"
+                                                   itemValue="#{mal.idRespostaTriagem}"/>
+                                </p:selectOneRadio>
+                                  
+                                 <h:outputLabel value="Sofre de Hepilepsia?" />
+                                 <p:selectOneRadio   value="#{candidatoDadorController.epilepsia.idRespostaTriagem}" 
+                                                     required="true" requiredMessage="Deve Selecionar o Estado das Documento Militar para Homens">
+                                    <f:selectItems value="#{candidatoDadorController.listaRespostaTriagems()}"
+                                                   var="hep"
+                                                   itemLabel="#{hep.descricaoRespostaTriagem}"
+                                                   itemValue="#{hep.idRespostaTriagem}"/>
+                                </p:selectOneRadio>
+                                 
+                                 
+                                 <h:outputLabel value="Tem ou já teve Siflis?" />
+                                 <p:selectOneRadio   value="#{candidatoDadorController.sifilis.idRespostaTriagem}" 
+                                                     required="true" requiredMessage="Deve Selecionar o Estado das Documento Militar para Homens">
+                                    <f:selectItems value="#{candidatoDadorController.listaRespostaTriagems()}"
+                                                   var="sif"
+                                                   itemLabel="#{sif.descricaoRespostaTriagem}"
+                                                   itemValue="#{sif.idRespostaTriagem}"/>
+                                </p:selectOneRadio>
+                                 
+                                  <h:outputLabel value="Tem  Tatuagem recente(menos de 1 ano)?" />
+                                  <p:selectOneRadio   value="#{candidatoDadorController.tatuagem.idRespostaTriagem}" 
+                                                     required="true" requiredMessage="Deve Selecionar o Estado das Documento Militar para Homens">
+                                    <f:selectItems value="#{candidatoDadorController.listaRespostaTriagems()}"
+                                                   var="tatu"
+                                                   itemLabel="#{tatu.descricaoRespostaTriagem}"
+                                                   itemValue="#{tatu.idRespostaTriagem}"/>
+                                </p:selectOneRadio>
+                                  
+                                  
+                                <h:outputLabel value="Recebeu alguma transfusão nos últimos 10 anos?" />
+                                <p:selectOneRadio   value="#{candidatoDadorController.transfusao.idRespostaTriagem}" 
+                                                     required="true" requiredMessage="Deve Selecionar o Estado das Documento Militar para Homens">
+                                    <f:selectItems value="#{candidatoDadorController.listaRespostaTriagems()}"
+                                                   var="trans"
+                                                   itemLabel="#{trans.descricaoRespostaTriagem}"
+                                                   itemValue="#{trans.idRespostaTriagem}"/>
+                                </p:selectOneRadio>
+                                
+                                 <h:outputLabel value="Fez consumo de bebida alcoólica nas últimas 24hs?" />
+                                 <p:selectOneRadio   value="#{candidatoDadorController.toxicoDependente.idRespostaTriagem}" 
+                                                     required="true" requiredMessage="Deve Selecionar o Estado das Documento Militar para Homens">
+                                    <f:selectItems value="#{candidatoDadorController.listaRespostaTriagems()}"
+                                                   var="toxi"
+                                                   itemLabel="#{toxi.descricaoRespostaTriagem}"
+                                                   itemValue="#{toxi.idRespostaTriagem}"/>
+                                </p:selectOneRadio>
+                                 
+                                  <h:outputLabel value="Alimentou-se a 2 horas antes da doaccao?" />
+                                  <p:selectOneRadio   value="#{candidatoDadorController.alimentacao.idRespostaTriagem}" 
+                                                     required="true" requiredMessage="Deve Selecionar o Estado das Documento Militar para Homens">
+                                    <f:selectItems value="#{candidatoDadorController.listaRespostaTriagems()}"
+                                                   var="ali"
+                                                   itemLabel="#{ali.descricaoRespostaTriagem}"
+                                                   itemValue="#{ali.idRespostaTriagem}"/>
+                                </p:selectOneRadio>
+                                  
+                                   <h:outputLabel value="Dormiu 6 horas antes das últimas 24hs?" />
+                                   <p:selectOneRadio   value="#{candidatoDadorController.sono.idRespostaTriagem}" 
+                                                     required="true" requiredMessage="Deve Selecionar o Estado das Documento Militar para Homens">
+                                    <f:selectItems value="#{candidatoDadorController.listaRespostaTriagems()}"
+                                                   var="sono"
+                                                   itemLabel="#{sono.descricaoRespostaTriagem}"
+                                                   itemValue="#{sono.idRespostaTriagem}"/>
+                                </p:selectOneRadio>
+
+                            </h:panelGrid>
+                            
+                            <h:panelGrid columns="2" cellspacing="8" cellpadding="4">                
+
+                    <p:outputLabel value="Resultado Triagem "/>
+                    <p:selectOneMenu value="#{candidatoDadorController.resultadoTriagem.idResultadoTriagem}" >
+                        <f:selectItem itemLabel="Selecione"/>
+                        <f:selectItems value="#{candidatoDadorController.listaResultadoTriagems()}"
+                                       var="resultado"
+                                       itemLabel="#{resultado.descricaoResultadoTriagem}"
+                                       itemValue="#{resultado.idResultadoTriagem}"/>
+                    </p:selectOneMenu>
+                </h:panelGrid>
+                            
+                        </p:fieldset>
+                        
+                        
+
+                    </p:tab>
+                    
+
+
+
+                </p:tabView>
+                
+                
+                
+            </p:panel>
+                <p:panel style=" font-family: cursive;">
+                    <p:commandButton style=" border-radius:10%;font-weight:700" ajax="false"
+                                     value="Salvar"
+                                     action="#{candidatoDadorController.salvar()}"/> 
+
+                </p:panel>
+
+        </h:form>
+       
+    </ui:define>
+
+</ui:composition>

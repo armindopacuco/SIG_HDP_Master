@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <div class="grid_12 header-repeat">
+            <div id="branding">
+                <div class="floatleft" style="margin-right: -25%;margin-top: -1%">
+                    <h:link class="brand">
+                        <p:graphicImage url="/resources/Imagens/logotipo.jpg" width="5%"/>
+                        Hospital Divina Providência S.I.G
+                    </h:link>
+                </div>
+                <div class="floatright">
+                    <div class="floatleft">
+                        <p:graphicImage url="/resources/img/img-profile.jpg" alt="Profile Pic"/>
+                    </div>
+                    <div class="floatleft marginleft10">
+                        <ul class="inline-ul floatleft">
+                            <li><h:outputLabel value="#{loginController.pegarNomeLogado.nomeUtilizador}"/></li>
+                            <li><h:link value="Config" /></li>
+                            <li><h:link value="Terminar sessão" outcome="/faces/login.xhtml"/></li>
+                        </ul>
+                        <br />
+                        <span class="small grey">Último Login: </span>
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>
+

@@ -1,0 +1,55 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui">
+
+    <!-- Definindo a cor da barra lateral-->
+    <h:form style="background-color: rgba(230,230,230,0.05); height: 750px">
+        <p:panelMenu style="width: 100%">
+            <p:submenu label="Iniciar">
+                <p:menuitem value="Página Inicial" url="/faces/rhVisao/homeRh.xhtml"/>
+            </p:submenu>
+            <p:submenu label="Recrutamento">
+                <p:submenu label="Funcionários">
+                    <p:menuitem value="Novo Funcionário" url="/faces/rhVisao/rhRecrutamento/funcionarioNovoRh.xhtml"/>
+                    <p:menuitem value="Pesquisar Funcionários" url="/faces/rhVisao/rhRecrutamento/funcionarioPesquisarRh.xhtml"/>
+                </p:submenu>
+                <p:submenu label="Candidatos">
+                    <p:menuitem value="Novo Candidato" url="/faces/rhVisao/rhRecrutamento/candidatoNovoRh.xhtml"/>
+                    <p:menuitem value="Aprovação de Candidatos" url="/faces/rhVisao/rhRecrutamento/candidatoAprovacaoRh.xhtml"/>
+                    <p:menuitem value="Pesquisar Candidatos" url="/faces/rhVisao/rhRecrutamento/candidatoPesquisarRh.xhtml"/>
+                </p:submenu>
+            </p:submenu>
+            <p:submenu label="Contratos">
+                <p:menuitem value="Novo Contrato" url="/faces/rhVisao/rhContratos/novoContratoRh.xhtml"/>
+                <p:menuitem value="Renovação de Contratos" url="/faces/rhVisao/rhContratos/renovacaoContratosRh.xhtml"/>
+                <p:menuitem value="Pesquisar Contratos" url="/faces/rhVisao/rhContratos/pesquisarContratosRh.xhtml"/>
+            </p:submenu>
+            <p:submenu label="Horários e Escalas">
+                <p:menuitem value="Horário Geral de Trabalho"/>
+                <p:submenu label="Horários">
+                    <p:menuitem value="Novo Turno"/>
+                    <p:menuitem value="Pesquisar Turnos"/>
+                </p:submenu>
+                <p:submenu label="Escalas">
+                    <p:menuitem value="Nova Escala"/>
+                    <p:menuitem value="Ver Escala"/>
+                </p:submenu>
+            </p:submenu>
+            <p:submenu label="Assiduidade">
+                <p:menuitem value="Registo das Ocorrências de Funcionários" 
+                            url="/faces/rhVisao/rhAssiduidade/registoOcorrenciasFuncionariosRh.xhtml"/>
+            </p:submenu>
+            <p:submenu label="Férias">
+                <p:submenu label="Pedidos de Férias">
+                    <p:menuitem value="Novo Pedido" url="/faces/rhVisao/rhFerias/pedidoFeriasNovoRh.xhtml"/>
+                    <p:menuitem value="Pesquisar Pedidos" url="/faces/rhVisao/rhFerias/pedidoFeriasPesquisarRh.xhtml"/>
+                </p:submenu>
+                <p:submenu label="Concessão de Férias">
+                    <p:menuitem value="Aprovação de Férias" url="/faces/rhVisao/rhFerias/feriasAprovacaoRh.xhtml"/>
+                    <p:menuitem value="Pesquisar Férias" url="/faces/rhVisao/rhFerias/feriasPesquisarRh.xhtml"/>
+                </p:submenu>
+            </p:submenu>
+        </p:panelMenu>
+    </h:form>
+</ui:composition>

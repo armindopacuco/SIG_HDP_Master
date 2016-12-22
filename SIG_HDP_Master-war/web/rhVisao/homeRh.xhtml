@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./../template/masterPage.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"                
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="menuHorizontal">
+        <ui:include src="./menuHorizontalRh.xhtml"/>
+    </ui:define>
+    <ui:define name="menuLateral">
+        <ui:include src="./menuLateralRh.xhtml"/>
+    </ui:define>
+
+    <ui:define name="center">
+        <h1>Recursos Humanos</h1>
+        <p:graphicImage  id="imgHome" url="/resources/Imagens/rh1.jpg" width="70%" alt="Image Description for" title="banner1.jpg"/>
+        <div class="float-right">
+            <center><h2>Menu de Acesso Rápido</h2></center>
+            <div class="float-right">
+                <h3>
+                    <h:link outcome="/faces/rhVisao/rhRecrutamento/funcionarioPesquisarRh.xhtml">
+                        <p:graphicImage url="/resources/img/arrow.png" alt="Image Description for"/>
+                        Pesquisar Funcionários
+                    </h:link>
+                </h3>
+                <h3>
+                    <h:link outcome="/faces/rhVisao/rhRecrutamento/candidatoAprovacaoRh.xhtml">
+                        <p:graphicImage url="/resources/img/arrow.png" alt="Image Description for"/>
+                        Aprovação de Candidatos
+                    </h:link>
+                </h3>
+                <h3>
+                    <h:link outcome="/faces/rhVisao/rhContratos/renovacaoContratosRh.xhtml">
+                        <p:graphicImage url="/resources/img/arrow.png" alt="Image Description for"/>
+                        Renovação de Contratos
+                    </h:link>
+                </h3>
+                <h3>
+                    <h:link outcome="/faces/rhVisao/rhFerias/feriasAprovacaoRh.xhtml">
+                        <p:graphicImage url="/resources/img/arrow.png" alt="Image Description for"/>
+                        Aprovação de Férias
+                    </h:link>
+                </h3>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
